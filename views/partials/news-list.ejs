@@ -1,0 +1,29 @@
+<section class="news">
+  <h3><%= heading %></h3>
+  <% if (items.length < requested) { %>
+    <p class="note">
+      Запрошено <%= requested %>, но лента сейчас отдаёт только <%= items.length %>.
+    </p>
+  <% } %>
+  <% if (items.length === 0) { %>
+    <p class="empty">В этой категории пока нет новостей.</p>
+  <% } else { %>
+    <dl>
+      <% items.forEach(function (item) { %>
+        <dt>
+          <a href="<%= item.link %>" target="_blank" rel="noopener"><%= item.title %></a>
+        </dt>
+        <dd>
+          <% if (item.description) { %>
+            <p><%= item.description %></p>
+          <% } %>
+          <p class="meta">
+            <% if (item.pubDate) { %><time><%= formatDate(item.pubDate) %></time><% } %>
+            <% if (item.rubric) { %><span><%= item.rubric %></span><% } %>
+            <% if (item.author) { %><span><%= item.author %></span><% } %>
+          </p>
+        </dd>
+      <% }) %>
+    </dl>
+  <% } %>
+</section>

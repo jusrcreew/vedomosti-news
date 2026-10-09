@@ -1,0 +1,25 @@
+<%- include('partials/head', { pageTitle: 'Главная' }) %>
+  <section class="intro">
+    <h1>Что нового в «Ведомостях»?</h1>
+  </section>
+
+  <form id="picker" class="picker" autocomplete="off">
+    <label class="field">
+      <span>Рубрика</span>
+      <select id="category" name="category" disabled>
+        <option value="">Загружаем список рубрик…</option>
+      </select>
+    </label>
+    <label class="field field-count">
+      <span>Сколько новостей</span>
+      <input id="count" name="count" type="number" min="1" max="9999" step="1" value="10" required>
+    </label>
+  </form>
+
+  <p id="status" class="status" aria-live="polite"></p>
+  <div id="result" class="result">
+    <p class="empty">Здесь появятся новости выбранной рубрики.</p>
+  </div>
+
+  <script src="/app.js" defer></script>
+<%- include('partials/foot') %>
